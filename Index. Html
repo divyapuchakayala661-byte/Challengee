@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture Dashboard</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        /* Sidebar Styles */
+        #sidebar {
+            width: 250px;
+            background-color: #2d3e50;
+            color: #fff;
+            height: 100vh;
+            padding-top: 20px;
+            position: fixed;
+        }
+
+        #sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        #sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        #sidebar ul li {
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #sidebar ul li:hover {
+            background-color: #1f2a34;
+        }
+
+        /* Content Area Styles */
+        #content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            margin: 0 0 10px 0;
+        }
+
+        .card p {
+            font-size: 1.2em;
+        }
+
+        .data-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .data-box div {
+            padding: 10px;
+            background-color: #e2e8f0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            text-align: center;
+        }
+
+        .data-box div h4 {
+            margin-bottom: 5px;
+        }
+
+        .data-box div p {
+            font-size: 1.4em;
+            color: #333;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-left: 250px;
+        }
+
+        .navbar h1 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <h2>Agriculture Dashboard</h2>
+        <ul>
+            <li onclick="showDashboard()">Dashboard</li>
+            <li onclick="showWeather()">Weather</li>
+            <li onclick="showCropStatus()">Crop Status</li>
+            <li onclick="showReports()">Reports</li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div id="content">
+        <!-- Navbar -->
+        <div class="navbar">
+            <h1>Welcome to the Agriculture Dashboard</h1>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div id="dashboard" class="content-section">
+            <div class="card">
+                <h3>Overview</h3>
+                <p>This dashboard provides real-time updates on weather, crop health, and overall farm status.</p>
+            </div>
+
+            <!-- Data Display Box -->
+            <div class="data-box">
+                <div>
+                    <h4>Temperature</h4>
+                    <p id="temp">30°C</p>
+                </div>
+                <div>
+                    <h4>Humidity</h4>
+                    <p id="humidity">70%</p>
+                </div>
+                <div>
+                    <h4>Rainfall</h4>
+                    <p id="rainfall">15 mm</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weather Content -->
+        <div id="weather" class="content-section" style="display:none;">
+            <div class="card">
+                <h3>Weather Forecast</h3>
+                <p id="forecast">Clear skies with a slight breeze. Perfect for farming!</p>
+            </div>
+        </div>
+
+        <!-- Crop Status Content -->
+        <div id="crop-status" class="content-section" style="display:none;">
+            <div class="card">
+                <h3>Crop Health</h3>
+                <p>Current crop status: <strong>Healthy</strong></p>
+            </div>
+        </div>
+
+        <!-- Reports Content -->
+        <div id="reports" class="content-section" style="display:none;">
+            <div class="card">
+                <h3>Monthly Report</h3>
+                <p>Latest report shows a growth of 15% in yield over the past month.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function showDashboard() {
+            document.getElementById('dashboard').style.display = 'block';
+            document.getElementById('weather').style.display = 'none';
+            document.getElementById('crop-status').style.display = 'none';
+            document.getElementById('reports').style.display = 'none';
+        }
+
+        function showWeather() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('weather').style.display = 'block';
+            document.getElementById('crop-status').style.display = 'none';
+            document.getElementById('reports').style.display = 'none';
+        }
+
+        function showCropStatus() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('weather').style.display = 'none';
+            document.getElementById('crop-status').style.display = 'block';
+            document.getElementById('reports').style.display = 'none';
+        }
+
+        function showReports() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('weather').style.display = 'none';
+            document.getElementById('crop-status').style.display = 'none';
+            document.getElementById('reports').style.display = 'block';
+        }
+
+        // Set some default data
+        function setDashboardData() {
+            document.getElementById('temp').textContent = '28°C';  // Example Temperature Data
+            document.getElementById('humidity').textContent = '65%'; // Example Humidity Data
+            document.getElementById('rainfall').textContent = '20 mm'; // Example Rainfall Data
+        }
+
+        // Initialize
+        setDashboardData();
+    </script>
+</body>
+</html>
